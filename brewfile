@@ -72,3 +72,5 @@ cask "clipy"
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
+# Screensaver with user created images
+cask "aerial"
