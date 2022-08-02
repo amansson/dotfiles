@@ -2,3 +2,5 @@
 
 # Installing core apps and tweaks
 chmod +x scripts/*.sh
+
+scripts/install_brew.sh
