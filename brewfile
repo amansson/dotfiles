@@ -26,6 +26,8 @@ brew "node"
 brew "nvm"
 # OpenBSD freely-licensed SSH connectivity tools
 brew "openssh"
+# Tool for managing dock items
+brew "dockutil"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
 # Static analysis and lint tool, for (ba)sh scripts
