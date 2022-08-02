@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 apps=(
-	Google Chrome
+	"Google Chrome"
     iTerm
-	Visual Studio Code
+	"Visual Studio Code"
     Insomnia
 	Slack
 	Spotify
-    Microsoft Outlook
-    Microsoft Teams
+    "Microsoft Outlook"
+    "Microsoft Teams"
 )
 
 # Remove all apps from Dock
