@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
-# The source: https://github.com/mathiasbynens/dotfiles/blob/main/.macos
+set -euo pipefail
 
-# Close any open System Preferences panes, to prevent them from overriding
-# settings we’re about to change
-osascript -e 'tell application "System Preferences" to quit'
+# The source: https://github.com/mathiasbynens/dotfiles/blob/main/.macos
 
 # Switch to dark mode
 osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to 1'
@@ -23,12 +21,6 @@ chflags nohidden ~/Library
 defaults write com.apple.Finder FXPreferredViewStyle Nlsv
 ## Always open everything in Finder's column view
 # defaults write com.apple.Finder FXPreferredViewStyle clmv
-
-# Finder: show the ~/Library folder.
-chflags nohidden ~/Library
-
-# Finder: show the /Volumes folder
-sudo chflags nohidden /Volumes
 
 # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
 defaults write com.apple.finder QuitMenuItem -bool true
@@ -110,45 +102,20 @@ defaults write com.apple.dock wvous-br-corner -int 5
 defaults write com.apple.dock wvous-br-modifier -int 0
 
 ###############################################################################
-# Terminal & iTerm 2                                                          #
-###############################################################################
-# Iterm: don't display the annoying prompt when quitting
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false
-
-###############################################################################
-# Safari                                                                      #
-###############################################################################
-# Safari: show the full URL in the address bar (note: this still hides the scheme)
-defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
-
-# Safari: enable the Develop menu and the Web Inspector
-defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
-
-# Safari: add a context menu item for showing the Web Inspector in web views
-defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
-
-# Safari: disable AutoFill
-defaults write com.apple.Safari AutoFillPasswords -bool false
-defaults write com.apple.Safari AutoFillCreditCardData -bool false
-
-# Safari: warn about fraudulent websites
-defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true
-
-# Safari: press Tab to highlight each item on a web page
-defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool true
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks -bool true
-
-###############################################################################
 # Others                                                                      #
 ###############################################################################
 # Use "old" scroll style
 defaults write -g com.apple.swipescrolldirection -bool false
 
+# Trackpad/mouse: increase tracking (cursor) speed
+defaults write -g com.apple.mouse.scaling -float 1.5
+
 # Key repeat: disable press-and-hold in favor of key repeat
 defaults write -g ApplePressAndHoldEnabled -bool false
+
+# Key repeat: set the fastest possible repeat and shortest initial delay
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 # Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
@@ -162,6 +129,29 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
 defaults write NSGlobalDomain AppleFontSmoothing -int 1
 
+# Disable smart quotes and dashes (they mangle code/terminal input)
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+# Disable auto-correct
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+# Expand save and print panels by default
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+# Disable window open/close animations
+defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+
+# Disable "reopen windows when logging back in" after a restart
+defaults write com.apple.loginwindow TALLogoutSavesState -bool false
+defaults write com.apple.loginwindow LoginwindowLaunchesRelaunchApps -bool false
+
+# Speed up Mission Control / Spaces switching animations
+defaults write com.apple.dock expose-animation-duration -float 0.1
+
 # Avoid creating .DS_Store files on network or USB volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
@@ -169,8 +159,5 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 # Screensaver: require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
-
-# Avoid creating .DS_Store files on network volumes
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
 echo "MacOS tweaks. Some of these changes require a logout/restart to take effect."
