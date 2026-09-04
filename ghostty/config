@@ -1,0 +1,6 @@
+font-family = "FiraCode Nerd Font Mono"
+font-size = 14
+theme = TokyoNight
+window-decoration = true
+shell-integration = fish
+cursor-style = block
