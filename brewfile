@@ -7,70 +7,68 @@ tap "homebrew/core"
 tap "homebrew/services"
 
 # Modern replacement for 'ls'
-brew "exa"
-# Collection of GNU find, xargs, and locate
-brew "findutils"
+brew "eza"
 # Distributed revision control system
 brew "git"
-# GNU grep, egrep and fgrep
-brew "grep"
-# Tools and libraries to manipulate images in many formats
-brew "imagemagick"
-# App to build and share containerized applications and microservices
-cask "docker"
-# Isolated development environments using Docker
+# Simple terminal UI for git commands
+brew "lazygit"
+# Nicer diffs for git and lazygit
+brew "git-delta"
+# Fast grep replacement
+brew "ripgrep"
+# Modern find replacement
+brew "fd"
+# Fuzzy finder
+brew "fzf"
+# cat with syntax highlighting
+brew "bat"
+# GitHub CLI
+brew "gh"
+# JSON processor
+brew "jq"
+# Docker CLI (used with colima instead of Docker Desktop)
+brew "docker"
+# Docker Compose CLI plugin
 brew "docker-compose"
+# Lightweight container runtime for macOS (Docker Desktop alternative)
+brew "colima"
 # Platform built on V8 to build network applications
 brew "node"
-# Manage multiple Node.js versions
-brew "nvm"
-# OpenBSD freely-licensed SSH connectivity tools
-brew "openssh"
+# Fast Node.js version manager with fish support
+brew "fnm"
 # Tool for managing dock items
 brew "dockutil"
-# 7-Zip (high compression file archiver) implementation
-brew "p7zip"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Internet file retriever
 brew "wget"
-# UNIX shell (command interpreter)
-brew "zsh"
-# Additional completion definitions for zsh
-brew "zsh-completions"
+# User-friendly command line shell
+brew "fish"
+# Cross-shell prompt
+brew "starship"
+# Smarter cd command that learns your habits
+brew "zoxide"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Command-line helper for the 1Password password manager
 cask "1password-cli"
-# Disk usage utility
-cask "disk-inventory-x"
+# Nerd Font for terminal icons/ligatures
+cask "font-fira-code-nerd-font"
 # Web browser
-cask "firefox"
-cask "font-fira-code"
-cask "font-meslo-for-powerline"
-# Web browser
-cask "google-chrome"
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
-# Collaboration platform for API development
-cask "insomnia"
+cask "brave-browser"
+# Fast, GPU-accelerated terminal emulator
+cask "ghostty"
+# API development and testing tool
+cask "hoppscotch"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
 # Team communication and collaboration software
 cask "slack"
 # Music streaming service
 cask "spotify"
-# Unpacks archive files
-cask "the-unarchiver"
 # Open-source code editor
 cask "visual-studio-code"
-# Multimedia player
-cask "vlc"
-# Copy and paste history
-cask "clipy"
+# Clipboard manager
+cask "maccy"
 # Lazier way to manage everything docker
 brew "lazydocker"
-# Simple terminal UI for git commands
-brew "lazygit"
-# Screensaver with user created images
-cask "aerial"

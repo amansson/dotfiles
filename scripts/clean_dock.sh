@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 apps=(
-	"Google Chrome"
-    iTerm
+	"Brave Browser"
+    Ghostty
 	"Visual Studio Code"
-    Insomnia
 	Slack
 	Spotify
-    "Microsoft Outlook"
-    "Microsoft Teams"
 )
 
 # Remove all apps from Dock
@@ -17,7 +16,11 @@ dockutil --no-restart --remove all
 # Add all my apps to the Dock
 for app in "${apps[@]}"
 do
-	dockutil --add "/Applications/${app}.app" --no-restart
+	if [ -d "/Applications/${app}.app" ]; then
+		dockutil --add "/Applications/${app}.app" --no-restart
+	else
+		echo "Skipping missing app: ${app}"
+	fi
 done
 
 killall Dock
